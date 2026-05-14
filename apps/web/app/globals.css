@@ -127,4 +127,7 @@
   html {
     @apply font-sans;
   }
+  :root{
+    height: 100%;
+  }
 }
