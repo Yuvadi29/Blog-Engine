@@ -2,7 +2,8 @@
   "name": "@blog/database",
   "version": "1.0.0",
   "private": true,
-  "main": "src/index.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.105.4",
