@@ -131,3 +131,34 @@
     height: 100%;
   }
 }
+
+.ProseMirror {
+  min-height: 500px;
+  outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: hsl(var(--muted-foreground));
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror pre {
+  background: #0d1117;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+
+.ProseMirror code {
+  font-family: monospace;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 1rem;
+  color: hsl(var(--muted-foreground));
+}
