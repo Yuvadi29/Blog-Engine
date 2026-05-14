@@ -11,6 +11,16 @@ import TextAlign from '@tiptap/extension-text-align'
 
 import Highlight from '@tiptap/extension-highlight'
 
+import TaskList from '@tiptap/extension-task-list'
+import TaskItem from '@tiptap/extension-task-item'
+
+import HorizontalRule from '@tiptap/extension-horizontal-rule'
+
+import { Table } from '@tiptap/extension-table'
+import TableRow from '@tiptap/extension-table-row'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+
 import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
 
 import { createLowlight } from 'lowlight'
@@ -33,7 +43,7 @@ export const editorExtensions = [
   }),
 
   Placeholder.configure({
-    placeholder: 'Start writing your story...',
+    placeholder: 'Write something amazing...',
   }),
 
   Typography,
@@ -41,6 +51,22 @@ export const editorExtensions = [
   CharacterCount,
 
   Highlight,
+
+  HorizontalRule,
+
+  TaskList,
+
+  TaskItem.configure({
+    nested: true,
+  }),
+
+  Table.configure({
+    resizable: true,
+  }),
+
+  TableRow,
+  TableHeader,
+  TableCell,
 
   TextAlign.configure({
     types: ['heading', 'paragraph'],
