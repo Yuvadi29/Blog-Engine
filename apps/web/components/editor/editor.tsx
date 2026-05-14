@@ -13,7 +13,10 @@ import { editorExtensions } from './extensions'
 
 import { EditorToolbar } from './editor-toolbar'
 import { EditorHeader } from './editor-header'
+
+import { BubbleMenu } from './bubble-menu'
 import { createBrowserClient } from '@supabase/ssr'
+
 
 interface Props {
   blog: any
@@ -30,6 +33,9 @@ export function Editor({
   const [title, setTitle] = useState(
     blog.title
   )
+
+  const [excerpt, setExcerpt] =
+    useState(blog.excerpt || '')
 
   const [saving, setSaving] =
     useState(false)
@@ -59,6 +65,7 @@ export function Editor({
         .from('blogs')
         .update({
           title,
+          excerpt,
           content_mdx: JSON.stringify(
             editor.getJSON()
           ),
@@ -80,7 +87,7 @@ export function Editor({
 
   useEffect(() => {
     saveContent()
-  }, [title])
+  }, [title, excerpt])
 
   if (!editor) return null
 
@@ -90,9 +97,15 @@ export function Editor({
         title={title}
         setTitle={setTitle}
         saving={saving}
+        editor={editor}
+        blog={blog}
+        excerpt={excerpt}
+        setExcerpt={setExcerpt}
       />
 
       <EditorToolbar editor={editor} />
+
+      <BubbleMenu editor={editor} />
 
       <div className='mx-auto max-w-4xl px-8 py-12'>
         <EditorContent editor={editor} />
